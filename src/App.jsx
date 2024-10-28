@@ -8,6 +8,10 @@ function App() {
         <div className="App">
             {/* <Header /> */}
             {/* <Login />              */}
+            <h1>App</h1>
+            <h2>Report</h2>
+            <h3>Home</h3>
+            <h4>Login</h4>
             <Home />
         </div>
         
