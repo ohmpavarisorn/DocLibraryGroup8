@@ -5,14 +5,11 @@ import Home from './page/Home/Home';
 import Report from './page/Report/Report';
 function App() {
     return ( 
-        <div className="App">
-            {/* <Header /> */}
-            {/* <Login />              */}
+        <div>
             <h1>App</h1>
             <h2>nct dream</h2>
             <h3>Home</h3>
             <h4>Login</h4>
-            <Home />
         </div>
         
      );
