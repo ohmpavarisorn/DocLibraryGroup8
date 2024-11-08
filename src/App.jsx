@@ -5,15 +5,8 @@ import { Layout } from "antd";
 import Logo from "./components/Logo";
 import MenuList from "./components/MenuList";
 import ToggleThemeButton from "./components/ToggleThemeButton";
-import Header from './layout/Header/Header';
-import Login from './page/Login/Login';
-import Home from './page/Home/Home';
-import Report from './page/Report/Report';
-import Navbar from './layout/Navbar/Navbar';
 
-import { HashRouter, Route, Routes, Link } from 'react-router-dom';
-
-const {  Sider } = Layout;
+const { Header, Sider } = Layout;
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -26,17 +19,12 @@ function App() {
       <Layout>
         <Sider theme={darkTheme ? "dark" : "light"} className="sidebar">
           <Logo />
-          <MenuList darkTheme={darkTheme} />
+            <MenuList darkTheme={darkTheme} />
           <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
         </Sider>
       </Layout>
-            <HashRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/report" element={<Report />} />
-                </Routes>
-            </HashRouter>
     </>
   );
 }
+
+export default App;
