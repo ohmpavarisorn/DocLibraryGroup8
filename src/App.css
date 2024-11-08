@@ -14,7 +14,7 @@
 .sidebar {
     /* background-color: #2B2B2B; */
     color: white;
-    
+    width: 25vh; /* Match width to the MenuList */
 }
 
 .logo {
@@ -40,13 +40,18 @@
 
 .menu-bar {
   height: 88vh;
-  width: 25vh;
+  width: 100%; /* Match with the width of the Sider */
   margin-top: 2rem;
-  margin-right: 10rem;
   display: flex;
   flex-direction: column;
   gap: 15px;
   font-size: 1rem;
   position: relative;
   
+}
+
+.toggle-theme-button {
+  width: 100%; /* Make button width match the MenuList and Sider */
+  padding: 10px;
+  text-align: center;
 }

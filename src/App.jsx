@@ -1,5 +1,5 @@
+// App.js
 import "./App.css";
-
 import { useState } from "react";
 import { Layout } from "antd";
 import Logo from "./components/Logo";
@@ -14,16 +14,21 @@ function App() {
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);
   };
+
   return (
-    <>
-      <Layout>
-        <Sider theme={darkTheme ? "dark" : "light"} className="sidebar">
-          <Logo />
-            <MenuList darkTheme={darkTheme} />
+    <Layout>
+      <Sider
+        theme={darkTheme ? "dark" : "light"}
+        className="sidebar"
+        width={250} /* กำหนดความกว้างของ Sider เป็น 350px */
+      >
+        <Logo />
+        <MenuList darkTheme={darkTheme} />
+        <div className="toggle-theme-button">
           <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
-        </Sider>
-      </Layout>
-    </>
+        </div>
+      </Sider>
+    </Layout>
   );
 }
 
