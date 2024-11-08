@@ -1,4 +1,5 @@
 import './Home.css'
+import Navbar from '../../layout/Navbar/Navbar';
 function Home() {
     return ( 
         <div className="home-container">
