@@ -1,21 +1,30 @@
-import './App.css'
-import Header from './layout/Header/Header';
-import Login from './page/Login/Login';
-import Home from './page/Home/Home';
-import Report from './page/Report/Report';
+import "./App.css";
+
+import { useState } from "react";
+import { Layout } from "antd";
+import Logo from "./components/Logo";
+import MenuList from "./components/MenuList";
+import ToggleThemeButton from "./components/ToggleThemeButton";
+
+const { Header, Sider } = Layout;
+
 function App() {
-    return ( 
-        <div className="App">
-            {/* <Header /> */}
-            {/* <Login />              */}
-            <h1>App</h1>
-            <h2>Report</h2>
-            <h3>Home</h3>
-            <h4>Login</h4>
-            <Home />
-        </div>
-        
-     );
+  const [darkTheme, setDarkTheme] = useState(true);
+
+  const toggleTheme = () => {
+    setDarkTheme(!darkTheme);
+  };
+  return (
+    <>
+      <Layout>
+        <Sider theme={darkTheme ? "dark" : "light"} className="sidebar">
+          <Logo />
+          <MenuList darkTheme={darkTheme} />
+          <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
+        </Sider>
+      </Layout>
+    </>
+  );
 }
 
 export default App;
