@@ -5,6 +5,7 @@ import { Layout } from "antd";
 import Logo from "./components/Logo";
 import MenuList from "./components/MenuList";
 import ToggleThemeButton from "./components/ToggleThemeButton";
+import Home from "./page/Home/Home";
 
 const { Header, Sider } = Layout;
 
@@ -28,6 +29,7 @@ function App() {
           <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
         </div>
       </Sider>
+      <Home />
     </Layout>
   );
 }
