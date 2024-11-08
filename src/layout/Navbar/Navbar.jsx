@@ -1,11 +1,10 @@
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Home from "../../page/Home/Home";
+
 function Navbar() {
-    return ( 
-        <div className="navbar-container">
-            <h1>
-                Navbar
-            </h1>
-        </div>
-     );
+    return (
+        <></>
+    );
 }
 
 export default Navbar;

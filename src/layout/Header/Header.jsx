@@ -1,13 +1,9 @@
 import './Header.css'
 
 function Header() {
-    return ( 
-        <div className='header-container'>
-            <h1>
-                Header
-            </h1>
-        </div>
-     );
+    return (
+        <></>
+    )
 }
 
-export default Header;
+export default Header
