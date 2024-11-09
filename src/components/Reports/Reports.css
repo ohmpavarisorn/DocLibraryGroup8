@@ -1,0 +1,28 @@
+.slick-dots {
+    position: absolute;
+    bottom: 10px; /* วางให้ห่างจากด้านล่างของรูปภาพ */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 2;
+  }
+
+.slick-dots li {
+    width: 20px; /* ความกว้างของขีด */
+    margin: 0 10px;
+  }
+  
+  .slick-dots li button:before {
+    font-size: 16px;
+    color: #333; /* สีของขีดที่ไม่ได้ถูกเลือก */
+    opacity: 1;
+    content: "▔▔"; /* ใช้ขีดแทนจุด */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #fc5310; /* สีของขีดที่ถูกเลือก */
+  }
+  
