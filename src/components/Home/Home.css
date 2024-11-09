@@ -101,3 +101,10 @@ table th, table td {
 .downloadm{
     background-color: #ffd5b7;
 }
+
+.sort{
+    padding: 8px 16px;
+    background-color: #ffd5b7;
+    border: none;
+    border-radius: 5px;
+}

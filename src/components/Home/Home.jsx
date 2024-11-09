@@ -34,12 +34,12 @@ const Home = () => {
                         onChange={handleSearch}
                     />
                 {/* Filter Buttons */}
-                    <button>จัดเรียง<span><i class="bi bi-caret-down-fill"></i></span></button>
+                    <button className='sort'>จัดเรียง<span><i class="bi bi-caret-down-fill" style={{color:"#e66309"}}></i></span></button>
                 </div>
                 
                 <div className="filter-buttons">
-                    <button className="downloadm"><span><i class="bi bi-check-lg"></i></span>เลือกหลายรายการ</button>
-                    <button className="downloadm"><span><i class="fi fi-ss-down-to-line"></i></span>ดาวน์โหลด</button>
+                    <button className="downloadm"><span><i class="bi bi-check-lg"></i></span>&nbsp;เลือกหลายรายการ</button>
+                    <button className="downloadm"><span><i class="fi fi-ss-down-to-line" style={{color:"#e66309"}}></i></span>&nbsp;ดาวน์โหลด</button>
                 </div>
                 
                 {/* Document Table */}
