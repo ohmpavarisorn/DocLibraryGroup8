@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.3.1",
+    "@swc/core": "^1.9.1",
     "antd": "^5.21.6",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

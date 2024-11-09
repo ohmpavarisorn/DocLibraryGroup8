@@ -10,14 +10,14 @@ import Permission from "./components/Permission/Permission";
 import Reports from "./components/Reports/Reports";
 import Help from "./components/Help/Help";
 import Profile from "./components/Profile/Profile";
-import "./index.css";
+import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="d-flex">
         <Sidebar />
-        <div className="content-container p-4">
+        <div className="content-container">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/administrator" element={<Administrator />} />
