@@ -1,0 +1,127 @@
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css');
+
+.permission-container {
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%; /* ทำให้ฟอร์มขยายเต็มความกว้าง */
+}
+
+.input-container input {
+    flex: 1; /* ให้ input กินพื้นที่ที่เหลือใน container */
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-btn {
+    background-color: #FF4D02;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    min-width: 25px; /* กำหนดความกว้างขั้นต่ำให้ปุ่ม */
+}
+
+.add-btn:hover {
+    background-color: #E64A00;
+}
+
+.add-btn:active {
+    background-color: #B83D00;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px; /* กำหนดความกว้างของสวิตช์ */
+    height: 34px; /* กำหนดความสูงของสวิตช์ */
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 50px; /* ขอบมนทำให้เป็นทรงรี */
+    transition: 0.2s; /* เพิ่มการเลื่อนไปยังตำแหน่ง */
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%; /* ทำให้ลูกศรกลม */
+    transition: 0.2s; /* เพิ่มการเคลื่อนที่ */
+  }
+  
+  input:checked + .slider {
+    background-color: #FF4D02; /* เปลี่ยนสีเมื่อสลับ */
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px); /* เคลื่อนที่ไปทางขวาเมื่อเปิด */
+  }  
+
+/* การจัดตำแหน่งปุ่ม "ยืนยัน" ที่ด้านขวาล่าง */
+.confirm-btn-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+  
+  .confirm-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .confirmed-data {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+  }
+  
