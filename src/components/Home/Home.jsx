@@ -4,12 +4,12 @@ import './Home.css'
 
 const Home = () => {
     const [documents, setDocuments] = useState([
-        { id: 1, name: "เอกสาร 1", docu:"xxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 2, name: "เอกสาร 2", docu:"xxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 3, name: "เอกสาร 3", docu:"xxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 4, name: "เอกสาร 4", docu:"xxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 5, name: "เอกสาร 5", docu:"xxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 6, name: "เอกสาร 6", docu:"xxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" }
+        { id: 1, name: "เอกสาร 1", docu:"xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
+        { id: 2, name: "เอกสาร 2", docu:"xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
+        { id: 3, name: "เอกสาร 3", docu:"xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
+        { id: 4, name: "เอกสาร 4", docu:"xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
+        { id: 5, name: "เอกสาร 5", docu:"xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
+        { id: 6, name: "เอกสาร 6", docu:"xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" }
     ]);
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -33,13 +33,13 @@ const Home = () => {
                         value={searchTerm}
                         onChange={handleSearch}
                     />
-                    <button>จัดเรียง</button>
+                {/* Filter Buttons */}
+                    <button>จัดเรียง<span><i class="bi bi-caret-down-fill"></i></span></button>
                 </div>
                 
-                {/* Filter Buttons */}
                 <div className="filter-buttons">
-                    <button className="filter-btn">เลือกหลายรายการ</button>
-                    <button className="filter-btn">ดาวน์โหลด</button>
+                    <button className="downloadm"><span><i class="bi bi-check-lg"></i></span>เลือกหลายรายการ</button>
+                    <button className="downloadm"><span><i class="fi fi-ss-down-to-line"></i></span>ดาวน์โหลด</button>
                 </div>
                 
                 {/* Document Table */}
@@ -65,8 +65,8 @@ const Home = () => {
                                 <td>{doc.year}</td>
                                 <td>{doc.category}</td>
                                 <td>
-                                    <button className="view-btn">ดู</button>
-                                    <button className="download-btn">ดาวน์โหลด</button>
+                                    <button className="view-btn"><span><i class="bi bi-eye" style={{color: "#e66309"}}></i></span></button>
+                                    <button className="download-btn"><span><i class="bi bi-download"></i></span></button>
                                 </td>
                             </tr>
                         ))}
