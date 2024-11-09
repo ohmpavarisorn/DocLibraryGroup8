@@ -1,11 +1,9 @@
-import './Home.css'
-import Navbar from '../../layout/Navbar/Navbar';
-function Home() {
-    return ( 
-        <div className="home-container">
-        <h1>Test</h1>
-        </div>
-     );
-}
+import './Home.css'// src/pages/Home.js
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+
+const Home = () => {
+  return <div>Welcome to the Home Page</div>;
+};
 
 export default Home;
