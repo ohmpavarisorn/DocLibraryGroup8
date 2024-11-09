@@ -2,7 +2,7 @@ import "./PermissionManage.css";
 import React, { useState } from "react";
 
 function PermissionManage() {
-    const [name, setName] = useState('');
+  const [name, setName] = useState("");
   return (
     <div>
       <h1>จัดการสิทธิ์ในการเข้าถึง</h1>
@@ -14,6 +14,7 @@ function PermissionManage() {
           onChange={(e) => setName(e.target.value)}
           placeholder="กรอกรหัสบุคลากร หรือ ชื่อบุคลากร"
         />
+        <button type="submit" onClick={handleButtonClick}>+</button>
       </form>
     </div>
   );
