@@ -1,60 +1,73 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import "./Login.css";
+import { verifyUser } from "../../data/users"; // import function จาก users.js
 
-function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberPassword, setRememberPassword] = useState(false);
+function Login({ setToken, setRole }) {
+  const usernameRef = useRef();
+  const passwordRef = useRef();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log({ username, password, rememberPassword });
+    const username = usernameRef.current.value.trim();
+    const password = passwordRef.current.value.trim();
+
+    // Reset input fields
+    usernameRef.current.value = "";
+    passwordRef.current.value = "";
+
+    // Verify user credentials
+    const userInfo = verifyUser(username, password);
+    if (userInfo === null) {
+      alert("ชื่อผู้ใช้หรือรหัสผ่านผิด");
+      usernameRef.current.focus();
+    } else {
+      setToken(userInfo.token); // Set token
+      setRole(userInfo.role); // Set role
+    }
+  };
+
+  const handleGuestLogin = () => {
+    setToken("guest_token"); // Set a default token for guest
+    setRole("guest"); // Set role as guest
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <img src="" className="logo" />
-        <h2>ยินดีต้อนรับ</h2>
-        <form onSubmit={handleLogin}>
-          <label>ชื่อผู้ใช้*</label>
-          <input
-            type="text"
-            placeholder="กรอกชื่อผู้ใช้"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <label>รหัสผ่าน*</label>
-          <input
-            type="password"
-            placeholder="กรอกรหัสผ่าน"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <div className="remember-password">
+    <div className="login-page">
+      <div className="login-container">
+        <div className="login-form">
+          {/* โลโก้ */}
+          <img src="" alt="" className="logo" />
+          
+          <h2>ยินดีต้อนรับ</h2>
+          <form onSubmit={handleLogin}>
+            <label>ชื่อผู้ใช้*</label>
             <input
-              type="checkbox"
-              checked={rememberPassword}
-              onChange={() => setRememberPassword(!rememberPassword)}
+              type="text"
+              placeholder="กรอกชื่อผู้ใช้"
+              ref={usernameRef}
+              required
             />
-            <label>จดจำรหัสผ่าน</label>
-          </div>
-          <button type="submit" className="login-button">
-            เข้าสู่ระบบ
-          </button>
+            <label>รหัสผ่าน*</label>
+            <input
+              type="password"
+              placeholder="กรอกรหัสผ่าน"
+              ref={passwordRef}
+              required
+            />
+            <button type="submit" className="login-button">
+              เข้าสู่ระบบ
+            </button>
+          </form>
           <a href="#" className="forgot-password">
             ลืมรหัสผ่าน ?
           </a>
-          <div className="divider">หรือ</div>
-          <a href="#" className="guest-login">
+          <div className="or">หรือ</div>
+          <button onClick={handleGuestLogin} className="guest-login">
             เข้าสู่ระบบโดยไม่ต้องลงชื่อเข้าใช้
-          </a>
-        </form>
+          </button>
+        </div>
+        <div className="login-bg"></div>
       </div>
-      <div className="login-bg"></div>
     </div>
   );
 }
