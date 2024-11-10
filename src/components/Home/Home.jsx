@@ -118,7 +118,10 @@ const Home = () => {
                         </div>
                     </div>
                 )}
-
+                <div className='download-buttons'>
+                    <button className='downloadm'><span><i class="bi bi-check-lg"></i></span>&nbsp;เลือกหลายรายการ</button>
+                    <button className='downloadm'><span><i class="fi fi-ss-down-to-line" style={{color: "#F14D31"}}></i></span>&nbsp;ดาวน์โหลด</button>
+                </div>
                 <table>
                     <thead>
                         <tr>
