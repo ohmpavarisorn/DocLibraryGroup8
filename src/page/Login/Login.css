@@ -1,90 +1,67 @@
-/* ใช้คลาส .login-page เฉพาะสำหรับหน้า Login */
+/* .login-page for entire page styling */
 .login-page {
-  font-family: Prompt, sans-serif;
+  font-family: 'Prompt', sans-serif;
   margin: 0;
-  height: 100vh;  /* ทำให้สูงเต็มหน้าจอ */
+  height: 100vh;
   display: flex;
-  justify-content: center;  /* จัดกลางแนวนอน */
-  align-items: center;  /* จัดกลางแนวตั้ง */
+  justify-content: center;
+  align-items: center;
   background-color: #ffffff;
 }
 
-/* ปรับขนาดความกว้างของ .login-container ให้กว้างขึ้น */
 .login-container {
   display: flex;
-  justify-content: center;  /* จัดกลางฟอร์มในแนวนอน */
-  max-width: 1200px;  /* กำหนดขนาดสูงสุดให้ใหญ่ขึ้น */
-  max-height: 1200px;
-  width: 100%;  /* ให้ฟอร์มใช้พื้นที่เต็มที่ */
-  height: 80%;  /* ปรับความสูงตามเนื้อหา */
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+  height: 80%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   overflow: hidden;
-  
 }
 
-
-/* ฟอร์ม Login ที่อยู่กลาง */
 .login-form {
   flex: 1;
   padding: 2rem;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  background-position: top 50px left 30px;
   justify-content: center;
   align-items: left;  /* จัดให้อยู่กลาง */
-  background: url("./logo.png") no-repeat;
-  background-size: 70px 70px;  /* กำหนดขนาดของโลโก้ */
-  background-position: top 50px left 30px;  /* ตำแหน่งของโลโก้ */
-  
-  
+  background: url("./logo.gif") no-repeat;
+  background-size: 300px 70px;  /* กำหนดขนาดของโลโก้ */
+  background-position: top 5rem left 10rem;  /* ตำแหน่งของโลโก้ */
 }
 
-/* โลโก้ */
 .logo {
   height: 70px;
-  margin-bottom: 3rem;  /* ปรับระยะห่างด้านล่างจากโลโก้ */
+  margin-bottom: 3rem;
 }
 
-
-/* ปรับให้ข้อความ h2 อยู่ทางซ้ายโดยไม่กระทบฟอร์ม */
 .login-form h2 {
-margin-bottom: 1rem;
   color: #333;
-  font-size: 50px;
+  font-size: 2rem;
   font-weight: 600;
-  text-align: left; /* จัดข้อความให้ไปทางซ้าย */
-  width: 100%; /* ทำให้แนวความกว้างของ h2 ครอบคลุมฟอร์ม */
-  
-}
-
-
-
-/* สไตล์ของ form */
-form {
-  font-family: Prompt, sans-serif;
-  font-size: large;
+  text-align: center;
   width: 100%;
 }
 
-/* สไตล์ input และ label */
-label {
+.login-form__label {
   font-size: 0.9rem;
   color: #333;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-input[type="text"],
-input[type="password"] {
+.login-form__input {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-
+  margin-bottom: 1rem;
 }
 
-/* สไตล์ปุ่ม Login */
 .login-button {
   width: 100%;
   padding: 0.75rem;
@@ -94,15 +71,13 @@ input[type="password"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 1rem;
-  margin: 2rem 0;
+  margin-top: 2rem;
 }
 
 .login-button:hover {
   background-color: #e64a19;
 }
 
-/* สไตล์ลิงก์ "ลืมรหัสผ่าน?" */
 .forgot-password {
   display: block;
   margin-top: 1.5rem;
@@ -112,26 +87,20 @@ input[type="password"] {
   text-decoration: none;
 }
 
-/* คำว่า "หรือ" ที่อยู่ตรงกลาง */
 .or {
   text-align: center;
   margin: 1rem 0;
   color: #999;
 }
 
-/* สไตล์ปุ่ม "เข้าสู่ระบบโดยไม่ต้องลงชื่อเข้าใช้" */
 .guest-login {
   color: #ff5722;
-  text-decoration: none;
   font-size: 0.9rem;
-  display: block;
   text-align: center;
-  border: none;
   background-color: white;
-  
+  border: none;
 }
 
-/* สำหรับ background ของหน้า Login */
 .login-bg {
   flex: 1;
   background: url("./BG.jpg") no-repeat center center;
