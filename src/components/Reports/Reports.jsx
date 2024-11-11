@@ -62,7 +62,7 @@ const Reports = () => {
   };
 
   const images = [
-    "https://media.discordapp.net/attachments/1286344294826770433/1304843340491264073/photo-1508514177221-188b1cf16e9d.jpg?ex=6730dd8f&is=672f8c0f&hm=98eb1593bf6d29c3d7ba7d7dc2950119bb60dc0a4a07023d381e2d05593489e1&=&format=webp&width=880&height=586",
+    "../../assets/Reports/SolarCell.jpg",
     "https://media.discordapp.net/attachments/1286344294826770433/1304843423865634877/vintage-camera-pencil-open-laptop-twig-isolated-white-background.jpg?ex=6730dda3&is=672f8c23&hm=c21c555b9b519fada7024acbbafcdc2489168eb6769918602254be5621b046b3&=&format=webp&width=878&height=586",
     "https://media.discordapp.net/attachments/1286344294826770433/1304843395918729236/13311383_v602-nunoon-50-rippednotes.jpg?ex=6730dd9c&is=672f8c1c&hm=01e3dbff45397e8bbbab02d755683e72ca5789aefe268c36a4d3565c61acd0b6&=&format=webp&width=878&height=586",
   ];
@@ -72,6 +72,7 @@ const Reports = () => {
 
   return (
     <>
+    <div className="aWholeContent">
       <div className="reports-header">
         <Slider {...settings} style={{ width: "100%" }}>
           {images.map((img, index) => (
@@ -90,6 +91,7 @@ const Reports = () => {
           <div className="Document-Upload"></div>
           <div className="Document-Delete"></div>
         </div>
+      </div>
       </div>
     </>
   );
