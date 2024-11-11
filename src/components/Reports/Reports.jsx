@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import './Reports.css';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // ฟังก์ชันสำหรับปุ่ม Next (ขวา)
@@ -68,16 +68,30 @@ const Reports = () => {
   ];
 
 
+
+
   return (
-    <div style={{ width: "100%", position: "relative", height: "200px" }}>
-      <Slider {...settings}>
-        {images.map((img, index) => (
-          <div key={index} style={{ height: "200px" }}>
-            <img src={img} style={{ width: "100%", margin: "0", height: "300px", objectFit: "cover" }} />
-          </div>
-        ))}
-      </Slider>
-    </div>
+    <>
+      <div className="reports-header">
+        <Slider {...settings} style={{ width: "100%" }}>
+          {images.map((img, index) => (
+            <div key={index} style={{ height: "200px" }}>
+              <img src={img} style={{ width: "100%", margin: "0", height: "300px", objectFit: "cover" }} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <div className="content">
+        <div className="flex1">
+          <div className="Document-section"></div>
+          <div className="Document-type"></div>
+        </div>
+        <div className="flex2">
+          <div className="Document-Upload"></div>
+          <div className="Document-Delete"></div>
+        </div>
+      </div>
+    </>
   );
 };
 
