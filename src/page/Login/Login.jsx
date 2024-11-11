@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./Login.css";
-import { verifyUser } from "../../data/users"; // import function จาก users.js
+import { verifyUser } from "../../data/users";
 
 function Login({ setToken, setRole }) {
   const usernameRef = useRef();
@@ -21,39 +21,40 @@ function Login({ setToken, setRole }) {
       alert("ชื่อผู้ใช้หรือรหัสผ่านผิด");
       usernameRef.current.focus();
     } else {
-      setToken(userInfo.token); // Set token
-      setRole(userInfo.role); // Set role
+      setToken(userInfo.token);
+      setRole(userInfo.role);
     }
   };
 
   const handleGuestLogin = () => {
-    setToken("guest_token"); // Set a default token for guest
-    setRole("guest"); // Set role as guest
+    setToken("guest_token");
+    setRole("guest");
   };
 
   return (
     <div className="login-page">
       <div className="login-container">
         <div className="login-form">
-          {/* โลโก้ */}
           <img src="" alt="" className="logo" />
           
           <h2>ยินดีต้อนรับ</h2>
-          <form onSubmit={handleLogin}>
-            <label>ชื่อผู้ใช้*</label>
-            <input
-              type="text"
-              placeholder="กรอกชื่อผู้ใช้"
-              ref={usernameRef}
-              required
-            />
-            <label>รหัสผ่าน*</label>
-            <input
-              type="password"
-              placeholder="กรอกรหัสผ่าน"
-              ref={passwordRef}
-              required
-            />
+            <form onSubmit={handleLogin}>
+              <label className="login-form__label">ชื่อผู้ใช้*</label>
+              <input
+                type="text"
+                placeholder="กรอกชื่อผู้ใช้"
+                ref={usernameRef}
+                required
+                className="login-form__input"
+              />
+              <label className="login-form__label">รหัสผ่าน*</label>
+              <input
+                type="password"
+                placeholder="กรอกรหัสผ่าน"
+                ref={passwordRef}
+                required
+                className="login-form__input"
+              />
             <button type="submit" className="login-button">
               เข้าสู่ระบบ
             </button>
