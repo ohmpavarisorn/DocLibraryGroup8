@@ -3,6 +3,7 @@
 // ตัวอย่างข้อมูลผู้ใช้ที่เก็บในระบบ (สามารถปรับเปลี่ยนเป็นข้อมูลจากฐานข้อมูลจริงได้)
 const users = [
     { username: "Team", password: "1234", token: "token1", role: "admin" },
+    { username: "Vic", password: "1234", token: "token1", role: "admin" },
     { username: "user2", password: "password2", token: "token2", role: "user" },
     { username: "guest", password: "guestpassword", token: "guest_token", role: "guest" },
   ];
