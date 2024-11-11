@@ -1,101 +1,100 @@
 /* ล็อคขนาด Sidebar */
 .sidebar-container {
-    width: 250px; 
-    min-width: 250px; 
-    max-width: 250px; 
-    background-color: #d84315;
-  }
-  
-  .sidebar {
-    height: 100%;
-    overflow-y: auto; 
-  }
-  
-  /* ปรับแต่งการแสดงผลของเมนู */
-  .sidebar-item {
-    color: #ffffff !important; 
-    padding: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  
-  /* ปิดการทำงานของ focus */
-  .sidebar-item:focus,
-  .nav-link:focus {
-    color: #ffffff !important;
-    background-color: inherit !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-  
-  /* ปรับสีตอน hover */
-  .sidebar-item:hover,
-  .nav-link:hover {
-    background-color: #e64a19;
-    color: #ffffff !important;
-  }
-  
-  /* ปรับสีตอนกด */
-  .sidebar-item.active,
-  .nav-link.active {
-    background-color: #ff7043;
-    color: #ffffff !important;
-  }
-  
-  /* Dropdown button */
-  .dropdown-toggle {
-    cursor: pointer;
-  }
-  
-  /* Logo section */
-  .logo-text {
-    font-size: 1.2rem;
-    color: #ffffff;
-  }
-  
-  .divider {
-    background-color: #ff7043;
-    height: 2px;
-  }
-  
-  /* Footer section */
-  .footer-section {
-    padding: 10px;
-    color: #ffffff;
-  }
-  
-  .user-name {
-    font-size: 0.9rem;
-  }
-  
-  /* Logo Section */
+  position: fixed; /* Keeps the sidebar fixed on the left */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px; 
+  min-width: 250px; 
+  max-width: 250px; 
+  background-color: #d84315;
+  z-index: 1000; /* Ensures sidebar appears above other content */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar {
+  height: 100%;
+  overflow-y: auto; 
+}
+
+/* ปรับแต่งการแสดงผลของเมนู */
+.sidebar-item {
+  color: #ffffff !important; 
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* ปิดการทำงานของ focus */
+.sidebar-item:focus,
+.nav-link:focus {
+  color: #ffffff !important;
+  background-color: inherit !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ปรับสีตอน hover */
+.sidebar-item:hover,
+.nav-link:hover {
+  background-color: #e64a19;
+  color: #ffffff !important;
+}
+
+/* ปรับสีตอนกด */
+.sidebar-item.active,
+.nav-link.active {
+  background-color: #ff7043;
+  color: #ffffff !important;
+}
+
+/* Dropdown button */
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+/* Logo section */
 .logo-section {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px 0;
-  }
-  
-  .logo-image {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-  }
-  
-  .logo-text {
-    font-size: 1.2rem;
-    color: #ffffff;
-    margin-left: 10px;
-  }
-  
-  .divider {
-    background-color: #ff7043;
-    height: 2px;
-  }
-  
-  /* ปรับแต่งเมื่อ hover */
-  .sidebar-item:hover {
-    background-color: #e64a19;
-    color: #ffffff !important;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0;
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+/* Divider styling */
+.divider {
+  background-color: #ff7043;
+  height: 2px;
+}
+
+/* Footer section */
+.footer-section {
+  padding: 10px;
+  color: #ffffff;
+  text-align: center; /* Centers the content in the footer */
+}
+
+.user-name {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+/* ปรับแต่งเมื่อ hover */
+.sidebar-item:hover {
+  background-color: #e64a19;
+  color: #ffffff !important;
+}
