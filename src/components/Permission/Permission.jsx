@@ -1,18 +1,15 @@
 import "./Permission.css";
 import React, { useState } from "react";
-
 function Permission() {
-  const [inputValue, setInputValue] = useState(""); // สำหรับเก็บค่าที่กรอก
-  const [namesList, setNamesList] = useState([]); // สำหรับเก็บรายการชื่อบุคลากร
-  const [confirmedData, setConfirmedData] = useState([]); // สำหรับเก็บข้อมูลที่ยืนยัน
-
-  // ฟังก์ชันจัดการการเปลี่ยนแปลงค่าของ input
+    const [inputValue, setInputValue] = useState(""); // สำหรับเก็บค่าที่กรอก
+    const [namesList, setNamesList] = useState([]); // สำหรับเก็บรายการชื่อบุคลากร
+    const [confirmedData, setConfirmedData] = useState([]); // สำหรับเก็บข้อมูลที่ยืนยัน
+      // ฟังก์ชันจัดการการเปลี่ยนแปลงค่าของ input
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
-
-  // ฟังก์ชันจัดการการส่งข้อมูล (เพิ่มชื่อในลิสต์)
-  const handleSubmit = (e) => {
+   // ฟังก์ชันจัดการการส่งข้อมูล (เพิ่มชื่อในลิสต์)
+   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
       setNamesList([
@@ -114,9 +111,8 @@ function Permission() {
           </tbody>
         </table>
       </div>
-
-      {/* ปุ่มยืนยันที่ด้านขวาล่าง */}
-      <div className="confirm-btn-container">
+       {/* ปุ่มยืนยันที่ด้านขวาล่าง */}
+       <div className="confirm-btn-container">
         <button className="confirm-btn" onClick={handleConfirm}>
           ยืนยัน
         </button>
@@ -124,5 +120,4 @@ function Permission() {
     </div>
   );
 }
-
 export default Permission;
