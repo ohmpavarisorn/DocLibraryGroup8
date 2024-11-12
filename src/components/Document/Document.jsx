@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Document.css';
 
-function DocumentUpload() {
+function Document() {
   const [documentName, setDocumentName] = useState('');
   const [fiscalYear, setFiscalYear] = useState('2565');
   const [documentNumber, setDocumentNumber] = useState('');
@@ -84,14 +84,14 @@ function DocumentUpload() {
           onChange={(e) => setAdditionalNotes(e.target.value)}
         ></textarea>
 
-        <button type="submit" className="btn btn-success mt-3">บันทึก</button>
+        <button type="submit" className="btn btn-success ">บันทึก</button>
       </form>
     <div className='upload-container'>
       <label>เลือกไฟล์ที่อัปโหลด</label>
         <input type="file" onChange={handleFileChange} />
       {uploadSuccess && <p>อัปโหลดสำเร็จ</p>}
-
-      <div className="usage-terms mt-4">
+      </div>
+      <div className="usage-terms">
         <h3>เงื่อนไขในการใช้งาน</h3>
         <ul>
           <li>สามารถอัปโหลดคราวละไม่เกิน 1 ไฟล์</li>
@@ -99,8 +99,8 @@ function DocumentUpload() {
         </ul>
         </div>
       </div>
-    </div>
+    
   );
 }
 
-export default DocumentUpload;
+export default Document;

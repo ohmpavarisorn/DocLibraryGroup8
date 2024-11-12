@@ -2,15 +2,23 @@
 
 .upload-page-container{
     margin-left: 250px;
-    padding: 10px;
+    padding: 20px;
     font-family: Arial, sans-serif;
-    display: flex;
+    
+}
+.upload-container{
+    position: absolute;                     
+    top: 60px;
+    right: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color:#f0ad4e    ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     color: #333;
     font-size: 24px;
-    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -25,7 +33,7 @@ h2 {
 .upload-form input[type="file"],
 .upload-form select,
 .upload-form textarea {
-    width: 100%;
+    width: 60%;
     padding: 10px;
     font-size: 14px;
     color: #333;
@@ -49,15 +57,15 @@ h2 {
 }
 
 .btn-success {
-    width: 100%;
+    width: 60%;
     padding: 10px;
     font-size: 16px;
     color: #ffffff;
     background-color: #28a745;
     border: none;
     border-radius: 4px;
-    margin-top: 20px;
-    cursor: pointer;
+    margin-top: 10px;
+    cursor: pointer;;
 }
 
 .btn-success:hover {
@@ -69,11 +77,15 @@ h2 {
     padding: 15px;
     border-radius: 4px;
     margin-top: 20px;
+    position: absolute;
+    bottom: 10px;
+    margin-left: 800px;
+    margin-bottom: 50px;
 }
 
 .usage-terms h3 {
     font-size: 18px;
-    color: #555;
+    color: hsl(35, 84%, 62%)f;
 }
 
 .usage-terms ul {

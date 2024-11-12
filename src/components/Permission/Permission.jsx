@@ -57,7 +57,7 @@ function Permission() {
         </button>
       </form>
 
-      {/* ตารางแสดงรายชื่อบุคลากรและข้อมูลอื่นๆ */}
+      {/* ตารางแสดงรายชื่                                                                                           บุคลากรและข้อมูลอื่นๆ */}
       <div className="names-list">
         <table>
           <thead>
@@ -120,4 +120,4 @@ function Permission() {
     </div>
   );
 }
-export default Permission;
+export default Permission;  

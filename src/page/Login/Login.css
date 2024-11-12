@@ -31,7 +31,7 @@
   align-items: left;  /* จัดให้อยู่กลาง */
   background: url("./logo.gif") no-repeat;
   background-size: 300px 70px;  /* กำหนดขนาดของโลโก้ */
-  background-position: top 5rem left 10rem;  /* ตำแหน่งของโลโก้ */
+  background-position: top 2rem left 10rem;  /* ตำแหน่งของโลโก้ */
 }
 
 .logo {
