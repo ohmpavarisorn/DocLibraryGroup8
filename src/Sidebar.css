@@ -1,14 +1,14 @@
-/* ล็อคขนาด Sidebar */
+/* Sidebar general styles */
 .sidebar-container {
-  position: fixed; /* Keeps the sidebar fixed on the left */
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  width: 250px; 
-  min-width: 250px; 
-  max-width: 250px; 
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
   background-color: #d84315;
-  z-index: 1000; /* Ensures sidebar appears above other content */
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,18 +16,22 @@
 
 .sidebar {
   height: 100%;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
-/* ปรับแต่งการแสดงผลของเมนู */
+/* Menu items */
 .sidebar-item {
-  color: #ffffff !important; 
+  color: #ffffff !important;
   padding: 10px;
   border-radius: 8px;
   text-decoration: none;
 }
 
-/* ปิดการทำงานของ focus */
+.sidebar-item:hover {
+  background-color: #e64a19;
+  color: #ffffff !important;
+}
+
 .sidebar-item:focus,
 .nav-link:focus {
   color: #ffffff !important;
@@ -36,23 +40,10 @@
   box-shadow: none !important;
 }
 
-/* ปรับสีตอน hover */
-.sidebar-item:hover,
-.nav-link:hover {
-  background-color: #e64a19;
-  color: #ffffff !important;
-}
-
-/* ปรับสีตอนกด */
 .sidebar-item.active,
 .nav-link.active {
   background-color: #ff7043;
   color: #ffffff !important;
-}
-
-/* Dropdown button */
-.dropdown-toggle {
-  cursor: pointer;
 }
 
 /* Logo section */
@@ -85,16 +76,29 @@
 .footer-section {
   padding: 10px;
   color: #ffffff;
-  text-align: center; /* Centers the content in the footer */
+  text-align: center;
+}
+
+.footer-link {
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+  color: #ffccbc !important;
+}
+
+.footer-profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
 }
 
 .user-name {
   font-size: 0.9rem;
   color: #ffffff;
-}
-
-/* ปรับแต่งเมื่อ hover */
-.sidebar-item:hover {
-  background-color: #e64a19;
-  color: #ffffff !important;
 }

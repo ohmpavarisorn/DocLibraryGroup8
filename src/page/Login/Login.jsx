@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "./Login.css";
 import { verifyUser } from "../../data/users";
 
-function Login({ setToken, setRole }) {
+function Login({ setToken, setRole, setUsername, setPassword }) {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -23,12 +23,16 @@ function Login({ setToken, setRole }) {
     } else {
       setToken(userInfo.token);
       setRole(userInfo.role);
+      setUsername(username);  // ตั้งค่า username ใน App
+      setPassword(password);  // ตั้งค่า password ใน App
     }
   };
 
   const handleGuestLogin = () => {
     setToken("guest_token");
     setRole("guest");
+    setUsername("guest");
+    setPassword(""); // กำหนด password ว่างสำหรับ guest
   };
 
   return (
