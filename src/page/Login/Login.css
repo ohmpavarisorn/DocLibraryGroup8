@@ -29,7 +29,7 @@
   background-position: top 50px left 30px;
   justify-content: center;
   align-items: left;  /* จัดให้อยู่กลาง */
-  background: url("./logo.gif") no-repeat;
+  background: url("./NewLogo.png") no-repeat;
   background-size: 300px 70px;  /* กำหนดขนาดของโลโก้ */
   background-position: top 5rem left 10rem;  /* ตำแหน่งของโลโก้ */
 }

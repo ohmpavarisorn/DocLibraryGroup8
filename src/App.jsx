@@ -12,7 +12,9 @@ import Reports from "./components/Reports/Reports";
 import Help from "./components/Help/Help";
 import Profile from "./components/Profile/Profile";
 import Login from "./page/Login/Login";
-import { verifyUser } from "./data/users"; // Import verifyUser function
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import MyDocument from "./components/MyDocument/MyDocument"; // Import MyDocument component
+import { verifyUser } from "./data/users";
 
 import "./App.css";
 
@@ -21,50 +23,55 @@ function App() {
   const [role, setRole] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserData] = useState(null); // State for user data
+  const [userData, setUserData] = useState(null);
 
-  // Fetch user data when username and password are set
   useEffect(() => {
     if (username && password) {
-      const user = verifyUser(username, password); // Verify user with username and password
+      const user = verifyUser(username, password);
       if (user) {
-        setUserData(user); // Set user data after successful login
+        setUserData(user);
       } else {
         console.error("Invalid credentials");
       }
     }
   }, [username, password]);
 
-  // If no token, redirect to Login
   if (!token) {
     return (
-      <Login
-        setToken={setToken}
-        setRole={setRole}
-        setUsername={setUsername}
-        setPassword={setPassword}
-      />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="*"
+            element={
+              <Login
+                setToken={setToken}
+                setRole={setRole}
+                setUsername={setUsername}
+                setPassword={setPassword}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     );
   }
 
   return (
     <BrowserRouter>
       <div className="d-flex">
-        {/* Pass the user data to Sidebar */}
         <Sidebar user={userData} />
         <div className="content-container">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/administrator" element={<Administrator />} />
+            <Route path="/my-document" element={<MyDocument />} />
             <Route path="/document" element={<Document />} />
             <Route path="/permission" element={<Permission />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/help" element={<Help />} />
-            {/* Pass username and password to Profile */}
-            <Route
-              path="/profile"
-              element={<Profile username={username} password={password} />}
-            />  
+            <Route path="/profile" element={<Profile username={username} password={password} />} />
+            {/* Add MyDocument route */}
           </Routes>
         </div>
       </div>

@@ -16,16 +16,14 @@ function Sidebar({ user }) {
       <div className="logo-section mb-4">
         <Link to="/" className="text-decoration-none d-flex align-items-center mb-3">
           <img
-            src="/img/logo.gif"
+            src="/img/Logo2.png"
             alt="Logo"
             className="logo-image me-2"
             style={{
               width: "215px",
-              height: "80px",
+              height: "100px",
               borderRadius: "10px",
-              padding: "10px",
-              border: "5px solid white",
-              backgroundColor: "white",
+              padding: "1px",
             }}
           />
         </Link>
@@ -46,6 +44,9 @@ function Sidebar({ user }) {
           {isDropdownOpen && (
             <ul className="nav flex-column ms-3">
               <li className="nav-item p-1">
+                <Link to="/my-document" className="nav-link sidebar-item">My Document</Link>
+              </li>
+              <li className="nav-item p-1">
                 <Link to="/document" className="nav-link sidebar-item">Document Management</Link>
               </li>
               <li className="nav-item p-1">
@@ -60,11 +61,6 @@ function Sidebar({ user }) {
         <li className="nav-item p-1">
           <Link to="/help" className="nav-link sidebar-item">
             <i className="bi bi-question-circle me-2"></i> Help
-          </Link>
-        </li>
-        <li className="nav-item p-1">
-          <Link to="/profile" className="nav-link sidebar-item">
-            <i className="bi bi-person me-2"></i> Profile
           </Link>
         </li>
       </ul>
