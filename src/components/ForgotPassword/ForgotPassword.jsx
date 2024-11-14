@@ -34,7 +34,7 @@ const ForgotPassword = () => {
   return (
     <div className="forgot-password-container">
       {/* Logo at the top-left */}
-      <img src="./img/logo.gif" alt="Logo" className="forgot-password-logo" />
+      <img src="./img/Logo2.png" alt="Logo" className="forgot-password-logo" />
 
       <div className="forgot-password-card">
         <h2 className="forgot-password-title">Forgot Password?</h2>
