@@ -186,3 +186,12 @@ table th, table td {
     border-radius: 4px;
     cursor: pointer;
 }
+
+.fil-buttons{
+    border: none;
+    background-color: #e2e4ff;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+}

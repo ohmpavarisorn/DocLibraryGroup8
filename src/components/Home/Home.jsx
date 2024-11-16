@@ -3,17 +3,17 @@ import './Home.css';
 
 const Home = () => {
     const [documents, setDocuments] = useState([
-        { id: 1, name: "เอกสาร 1", docu: "xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 2, name: "เอกสาร 2", docu: "xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 3, name: "เอกสาร 3", docu: "xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 4, name: "เอกสาร 4", docu: "xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 5, name: "เอกสาร 5", docu: "xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" },
-        { id: 6, name: "เอกสาร 6", docu: "xxxxxxxxxx", date: "วว-ดด-ปป", year: 2565, category: "หมวดหมู่ xxx" }
+        { id: 1, name: "เอกสาร 1", docu: "123456", date: "01-01-2565", year: 2565, category: "หมวดหมู่ A" },
+        { id: 2, name: "เอกสาร 2", docu: "789012", date: "15-02-2565", year: 2565, category: "หมวดหมู่ B" },
+        { id: 3, name: "เอกสาร 3", docu: "345678", date: "10-03-2565", year: 2565, category: "หมวดหมู่ C" },
+        { id: 4, name: "เอกสาร 4", docu: "901234", date: "20-04-2565", year: 2565, category: "หมวดหมู่ D" },
+        { id: 5, name: "เอกสาร 5", docu: "567890", date: "05-05-2565", year: 2565, category: "หมวดหมู่ E" },
+        { id: 6, name: "เอกสาร 6", docu: "112233", date: "25-06-2565", year: 2565, category: "หมวดหมู่ F" }
     ]);
 
     const [searchTerm, setSearchTerm] = useState("");
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-    const dropdownRef = useRef(null);  // ใช้ ref เก็บการอ้างอิงถึง dropdown
+    const dropdownRef = useRef(null); // ใช้ ref เก็บการอ้างอิงถึง dropdown
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
@@ -21,9 +21,7 @@ const Home = () => {
 
     const toggleDropdown = () => {
         setIsDropdownVisible(!isDropdownVisible);
-        console.log("Dropdown visibility:", !isDropdownVisible); // เพิ่มบรรทัดนี้เพื่อตรวจสอบ
     };
-
 
     // ใช้ useEffect เพื่อจัดการเหตุการณ์การคลิกนอก dropdown
     useEffect(() => {
@@ -39,9 +37,16 @@ const Home = () => {
         };
     }, []);
 
-    const filteredDocuments = documents.filter(doc =>
-        doc.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredDocuments = documents.filter(doc => {
+        const search = searchTerm.toLowerCase();
+        return (
+            doc.name.toLowerCase().includes(search) ||
+            doc.docu.toLowerCase().includes(search) ||
+            doc.date.toLowerCase().includes(search) ||
+            doc.year.toString().includes(search) ||
+            doc.category.toLowerCase().includes(search)
+        );
+    });
 
     return (
         <div className="home-container">
@@ -75,15 +80,15 @@ const Home = () => {
                                 <input type="date" />
                             </div>
                             <div className='filter-item'>
-                            <label>ประเภทเอกสาร</label>
-                            <select>
-                                <option value="">เลือก</option>
-                                <option value="ประเภท 1">หนังสือประชาสัมพันธ์</option>
-                                <option value="ประเภท 2">รายงานการประชุม</option>
-                                <option value="ประเภท 3">รายงานประจำปี</option>
-                                <option value="ประเภท 4">หนังสือรับรอง</option>
-                                <option value="ประเภท 5">หนังสือสั่งการข้อบังคับ</option>
-                            </select>
+                                <label>ประเภทเอกสาร</label>
+                                <select>
+                                    <option value="">เลือก</option>
+                                    <option value="ประเภท 1">หนังสือประชาสัมพันธ์</option>
+                                    <option value="ประเภท 2">รายงานการประชุม</option>
+                                    <option value="ประเภท 3">รายงานประจำปี</option>
+                                    <option value="ประเภท 4">หนังสือรับรอง</option>
+                                    <option value="ประเภท 5">หนังสือสั่งการข้อบังคับ</option>
+                                </select>
                             </div>
                         </div>
                         <div className="filter-row">
@@ -118,9 +123,16 @@ const Home = () => {
                         </div>
                     </div>
                 )}
+                
+                <div className="fil-buttons-container">
+                    <button className='fil-buttons'>ประเภทเอกสาร</button>
+                    <button className='fil-buttons'>ปีงบประมาณ</button>
+                    <button className='fil-buttons'>หน่วยงาน</button>
+                </div>
+
                 <div className='download-buttons'>
-                    <button className='downloadm'><span><i class="bi bi-check-lg"></i></span>&nbsp;เลือกหลายรายการ</button>
-                    <button className='downloadm'><span><i class="fi fi-ss-down-to-line" style={{color: "#F14D31"}}></i></span>&nbsp;ดาวน์โหลด</button>
+                    <button className='downloadm'><span><i className="bi bi-check-lg"></i></span>&nbsp;เลือกหลายรายการ</button>
+                    <button className='downloadm'><span><i className="fi fi-ss-down-to-line" style={{ color: "#F14D31" }}></i></span>&nbsp;ดาวน์โหลด</button>
                 </div>
                 <table>
                     <thead>
