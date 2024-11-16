@@ -1,98 +1,42 @@
 import React from "react";
 import Slider from "react-slick";
+import SliderComponent from "./SliderComponent/SliderComponent"
+import FileSummary from "./FileSummary/FileSummary";
+import LatestFiles from "./LatestFiles/LatestFiles";
 import './Reports.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-
-// ฟังก์ชันสำหรับปุ่ม Next (ขวา)
-const NextArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    style={{
-      position: "absolute",
-      right: 0,
-      top: "50%",
-      transform: "translateY(-50%)",
-      backgroundColor: "transparent",
-      color: "#fff",
-      border: "none",
-      width: "20%",
-      height: "100%",
-      cursor: "pointer",
-      zIndex: 1,
-    }}
-  >
-    &gt;
-  </button>
-);
-
-// ฟังก์ชันสำหรับปุ่ม Prev (ซ้าย)
-const PrevArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    style={{
-      position: "absolute",
-      left: 0,
-      top: "50%",
-      transform: "translateY(-50%)",
-      backgroundColor: "transparent",
-      color: "#fff",
-      border: "none",
-      width: "20%",
-      height: "100%",
-      cursor: "pointer",
-      zIndex: 1,
-    }}
-  >
-    &lt;
-  </button>
-);
+const slides = [
+  {
+    image: 'https://media.discordapp.net/attachments/1286344294826770433/1307390188095537162/photo-1508514177221-188b1cf16e9dawda.jpg?ex=673a217e&is=6738cffe&hm=3bc31f4059e47cdbd6de5116eb0a0b4ea1ccdd9c176a715cb6052ffa971df98c&=&format=webp&width=1211&height=356',
+    title: 'Slide 1',
+  },
+  {
+    image: 'https://media.discordapp.net/attachments/1286344294826770433/1307389902228422677/vintage-camera-pencil-open-laptop-twig-isolated-white-backgroundawd.jpg?ex=673a213a&is=6738cfba&hm=3cc839161590c86b48cdfdb5bab6036c8aa5f955ab5cd51061c79a408d414dd9&=&format=webp&width=1211&height=446',
+    title: 'Slide 2',
+  },
+  {
+    image: 'https://media.discordapp.net/attachments/1286344294826770433/1307389902668828702/13311383_v602-nunoon-50-rippednotesasd.jpg?ex=673a213a&is=6738cfba&hm=b9452b5cdb9f737552defa97d5c58a44d27d140f8c7b7e5dfff9307a614e57cb&=&format=webp&width=1211&height=424',
+    title: 'Slide 3',
+  },
+];
 
 const Reports = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    nextArrow: <NextArrow />, // เพิ่มปุ่มขวา
-    prevArrow: <PrevArrow />, // เพิ่มปุ่มซ้าย
-  };
-
-  const images = [
-    "../../assets/Reports/SolarCell.jpg",
-    "https://media.discordapp.net/attachments/1286344294826770433/1304843423865634877/vintage-camera-pencil-open-laptop-twig-isolated-white-background.jpg?ex=6730dda3&is=672f8c23&hm=c21c555b9b519fada7024acbbafcdc2489168eb6769918602254be5621b046b3&=&format=webp&width=878&height=586",
-    "https://media.discordapp.net/attachments/1286344294826770433/1304843395918729236/13311383_v602-nunoon-50-rippednotes.jpg?ex=6730dd9c&is=672f8c1c&hm=01e3dbff45397e8bbbab02d755683e72ca5789aefe268c36a4d3565c61acd0b6&=&format=webp&width=878&height=586",
-  ];
-
-
-
-
   return (
     <>
-    <div className="aWholeContent">
-      <div className="reports-header">
-        <Slider {...settings} style={{ width: "100%" }}>
-          {images.map((img, index) => (
-            <div key={index} style={{ height: "200px" }}>
-              <img src={img} style={{ width: "100%", margin: "0", height: "300px", objectFit: "cover" }} />
+      <div className="aWholeContent">
+        <SliderComponent slides={slides}/>
+        <div className="content">
+          <div className="flex1">
+            <div className="Document-section">
+
             </div>
-          ))}
-        </Slider>
-      </div>
-      <div className="content">
-        <div className="flex1">
-          <div className="Document-section"></div>
-          <div className="Document-type"></div>
+            <div className="Document-type"></div>
+          </div>
+          <div className="flex2">
+            <div className="Document-Upload"></div>
+            <div className="Document-Delete"></div>
+          </div>
         </div>
-        <div className="flex2">
-          <div className="Document-Upload"></div>
-          <div className="Document-Delete"></div>
-        </div>
-      </div>
       </div>
     </>
   );
