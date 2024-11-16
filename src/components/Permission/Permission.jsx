@@ -1,22 +1,21 @@
 import "./Permission.css";
 import React, { useState } from "react";
+
 function Permission() {
-    const [inputValue, setInputValue] = useState(""); // สำหรับเก็บค่าที่กรอก
-    const [namesList, setNamesList] = useState([]); // สำหรับเก็บรายการชื่อบุคลากร
-    const [confirmedData, setConfirmedData] = useState([]); // สำหรับเก็บข้อมูลที่ยืนยัน
-      // ฟังก์ชันจัดการการเปลี่ยนแปลงค่าของ input
+  const [inputValue, setInputValue] = useState(""); // สำหรับเก็บค่าที่กรอก
+  const [namesList, setNamesList] = useState([]); // สำหรับเก็บรายการชื่อบุคลากร
+  const [confirmedData, setConfirmedData] = useState([]); // สำหรับเก็บข้อมูลที่ยืนยัน
+  // ฟังก์ชันจัดการการเปลี่ยนแปลงค่าของ input
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
-   // ฟังก์ชันจัดการการส่งข้อมูล (เพิ่มชื่อในลิสต์)
-   const handleSubmit = (e) => {
+  // ฟังก์ชันจัดการการส่งข้อมูล (เพิ่มชื่อในลิสต์)
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
       setNamesList([
         {
           name: inputValue,
-          status: "ใช้งาน", // สถานะการใช้งาน
-          department: "IT", // หน่วยงาน
           documentAccess: false, // การเข้าถึงเอกสาร (toggle)
           permission: false, // การจัดการสิทธิ์เข้าถึง (toggle)
           report: false, // การจัดการรายงาน (toggle)
@@ -25,6 +24,12 @@ function Permission() {
       ]); // เพิ่มชื่อใหม่ในลิสต์
       setInputValue(""); // เคลียร์ช่องกรอก
     }
+  };
+
+  const handleDelete = (index) => {
+    // ใช้ filter ลบแถวที่ตรงกับ index
+    const updatedNamesList = namesList.filter((_, i) => i !== index);
+    setNamesList(updatedNamesList);
   };
 
   // ฟังก์ชันเพื่อ toggle สถานะการเข้าถึง
@@ -39,6 +44,8 @@ function Permission() {
     setConfirmedData(namesList);
     alert("ข้อมูลทั้งหมดได้รับการยืนยัน!");
   };
+
+  useEffect(() => {}, [])
 
   return (
     <div className="permission-container">
@@ -57,62 +64,75 @@ function Permission() {
         </button>
       </form>
 
-      {/* ตารางแสดงรายชื่                                                                                           บุคลากรและข้อมูลอื่นๆ */}
+      {/* ตารางแสดงรายชื่อ /*                                                                                     บุคลากรและข้อมูลอื่นๆ */}
       <div className="names-list">
         <table>
           <thead>
             <tr>
               <th>บุคลากร</th>
-              <th>สถานะการใช้งาน</th>
-              <th>หน่วยงาน</th>
-              <th>การจัดการเอกสาร</th>
-              <th>การจัดการสิทธิ์เข้าถึง</th>
-              <th>การจัดการรายงาน</th>
+              <th className="align-right">การจัดการเอกสาร</th>
+              <th className="align-right">การจัดการสิทธิ์เข้าถึง</th>
+              <th className="align-right">การจัดการรายงาน</th>
             </tr>
           </thead>
           <tbody>
-            {namesList.map((person, index) => (
-              <tr key={index}>
-                <td>{person.name}</td>
-                <td>{person.status}</td>
-                <td>{person.department}</td>
-                <td>
-                  <label className="switch">
-                    <input
-                      type="checkbox"
-                      checked={person.documentAccess}
-                      onChange={() => toggleAccess(index, "documentAccess")}
-                    />
-                    <span className="slider"></span>
-                  </label>
-                </td>
-                <td>
-                  <label className="switch">
-                    <input
-                      type="checkbox"
-                      checked={person.permission}
-                      onChange={() => toggleAccess(index, "permission")}
-                    />
-                    <span className="slider"></span>
-                  </label>
-                </td>
-                <td>
-                  <label className="switch">
-                    <input
-                      type="checkbox"
-                      checked={person.report}
-                      onChange={() => toggleAccess(index, "report")}
-                    />
-                    <span className="slider"></span>
-                  </label>
+            {namesList.length === 0 ? (
+              <tr>
+                <td colSpan="5" style={{ textAlign: "center" }}>
+                  ไม่มีข้อมูล
                 </td>
               </tr>
-            ))}
+            ) : (
+              namesList.map((person, index) => (
+                <tr key={index}>
+                  <td>{person.name}</td>
+                  <td className="align-center">
+                    <label className="switch">
+                      <input
+                        type="checkbox"
+                        checked={person.documentAccess}
+                        onChange={() => toggleAccess(index, "documentAccess")}
+                      />
+                      <span className="slider"></span>
+                    </label>
+                  </td>
+                  <td className="align-center">
+                    <label className="switch">
+                      <input
+                        type="checkbox"
+                        checked={person.permission}
+                        onChange={() => toggleAccess(index, "permission")}
+                      />
+                      <span className="slider"></span>
+                    </label>
+                  </td>
+                  <td className="align-center">
+                    <label className="switch">
+                      <input
+                        type="checkbox"
+                        checked={person.report}
+                        onChange={() => toggleAccess(index, "report")}
+                      />
+                      <span className="slider"></span>
+                    </label>
+                  </td>
+                  <td>
+                    {/* ปุ่มลบ */}
+                    <button
+                      className="btn-danger"
+                      onClick={() => handleDelete(index)}
+                    >
+                      <i className="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
 
-       <div className="confirm-btn-container">
+      <div className="confirm-btn-container">
         <button className="confirm-btn" onClick={handleConfirm}>
           ยืนยัน
         </button>
@@ -120,4 +140,4 @@ function Permission() {
     </div>
   );
 }
-export default Permission;  
+export default Permission;
