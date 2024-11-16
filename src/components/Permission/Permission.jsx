@@ -111,7 +111,7 @@ function Permission() {
           </tbody>
         </table>
       </div>
-       {/* ปุ่มยืนยันที่ด้านขวาล่าง */}
+
        <div className="confirm-btn-container">
         <button className="confirm-btn" onClick={handleConfirm}>
           ยืนยัน
