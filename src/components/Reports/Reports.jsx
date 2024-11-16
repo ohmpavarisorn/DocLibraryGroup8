@@ -4,6 +4,7 @@ import './Reports.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
 // ฟังก์ชันสำหรับปุ่ม Next (ขวา)
 const NextArrow = ({ onClick }) => (
   <button
