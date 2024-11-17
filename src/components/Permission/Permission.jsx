@@ -1,89 +1,84 @@
 import "./Permission.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import users from "../../data/users"; // Import users.js
 
 function Permission() {
-  const [inputValue, setInputValue] = useState(""); // สำหรับเก็บค่าที่กรอก
+  const [inputValue, setInputValue] = useState(""); // สำหรับเก็บค่าที่กรอกในช่องค้นหา
   const [namesList, setNamesList] = useState([]); // สำหรับเก็บรายการชื่อบุคลากร
-  const [confirmedData, setConfirmedData] = useState([]); // สำหรับเก็บข้อมูลที่ยืนยัน
-  // ฟังก์ชันจัดการการเปลี่ยนแปลงค่าของ input
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-  // ฟังก์ชันจัดการการส่งข้อมูล (เพิ่มชื่อในลิสต์)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue.trim()) {
-      setNamesList([
-        {
-          name: inputValue,
-          documentAccess: false, // การเข้าถึงเอกสาร (toggle)
-          permission: false, // การจัดการสิทธิ์เข้าถึง (toggle)
-          report: false, // การจัดการรายงาน (toggle)
-        },
-        ...namesList,
-      ]); // เพิ่มชื่อใหม่ในลิสต์
-      setInputValue(""); // เคลียร์ช่องกรอก
-    }
+  const [filteredNamesList, setFilteredNamesList] = useState([]); // สำหรับเก็บรายชื่อที่กรองตามชื่อ
+
+  // ฟังก์ชันที่ใช้ในการเพิ่มข้อมูลจาก users.js มาแสดงใน namesList
+  useEffect(() => {
+    const usersList = users.map((user) => ({
+      name: user.firstName + " " + user.lastName,
+      username: user.username,
+      documentAccess: false, // การเข้าถึงเอกสาร (toggle)
+      permission: false, // การจัดการสิทธิ์เข้าถึง (toggle)
+      report: false, // การจัดการรายงาน (toggle)
+    }));
+    setNamesList(usersList);
+    setFilteredNamesList(usersList); // กำหนดให้รายชื่อที่แสดงแรกเริ่มเป็นรายชื่อทั้งหมด
+  }, []); // ทำงานครั้งเดียวเมื่อคอมโพเนนต์โหลด
+
+  // ฟังก์ชันจัดการการค้นหาชื่อพนักงาน
+  const handleSearch = (e) => {
+    setInputValue(e.target.value); // อัพเดทค่า input
+    const searchTerm = e.target.value.toLowerCase(); // แปลงข้อความที่ค้นหามาเป็น lowercase เพื่อให้ค้นหาได้ไม่แยกตัวพิมพ์ใหญ่/เล็ก
+    const filtered = namesList.filter((person) =>
+      person.name.toLowerCase().includes(searchTerm) || person.username.toLowerCase().includes(searchTerm)
+    );
+    setFilteredNamesList(filtered); // อัพเดตรายชื่อที่แสดงผลหลังจากการค้นหา
   };
 
   const handleDelete = (index) => {
-    // ใช้ filter ลบแถวที่ตรงกับ index
-    const updatedNamesList = namesList.filter((_, i) => i !== index);
-    setNamesList(updatedNamesList);
+    const updatedNamesList = filteredNamesList.filter((_, i) => i !== index);
+    setFilteredNamesList(updatedNamesList);
   };
 
-  // ฟังก์ชันเพื่อ toggle สถานะการเข้าถึง
   const toggleAccess = (index, field) => {
-    const updatedNamesList = [...namesList];
+    const updatedNamesList = [...filteredNamesList];
     updatedNamesList[index][field] = !updatedNamesList[index][field];
-    setNamesList(updatedNamesList);
+    setFilteredNamesList(updatedNamesList);
   };
 
-  // ฟังก์ชันสำหรับยืนยันข้อมูล
   const handleConfirm = () => {
-    setConfirmedData(namesList);
     alert("ข้อมูลทั้งหมดได้รับการยืนยัน!");
   };
-
-  useEffect(() => {}, [])
 
   return (
     <div className="permission-container">
       <h3>จัดการสิทธิ์ในการเข้าถึง</h3>
 
-      {/* ฟอร์มกรอกชื่อบุคลากร */}
-      <form className="input-container" onSubmit={handleSubmit}>
+      {/* ช่องค้นหาชื่อพนักงาน */}
+      <div className="search-container">
         <input
           type="text"
           value={inputValue}
-          onChange={handleInputChange}
-          placeholder="กรอกรหัสบุคลากร หรือ ชื่อบุคลากร"
+          onChange={handleSearch}
+          placeholder="ค้นหาชื่อพนักงานหรือรหัสผู้ใช้งาน"
         />
-        <button className="add-btn" type="submit">
-          +
-        </button>
-      </form>
+      </div>
 
-      {/* ตารางแสดงรายชื่อ /*                                                                                     บุคลากรและข้อมูลอื่นๆ */}
+      {/* ตารางแสดงรายชื่อบุคลากร */}
       <div className="names-list">
         <table>
           <thead>
             <tr>
-              <th>บุคลากร</th>
-              <th className="align-right">การจัดการเอกสาร</th>
-              <th className="align-right">การจัดการสิทธิ์เข้าถึง</th>
-              <th className="align-right">การจัดการรายงาน</th>
+              <th style={{ width: '40%' }}>บุคลากร</th>
+              <th style={{ width: '20%' }} className="align-right">การจัดการเอกสาร</th>
+              <th style={{ width: '20%' }} className="align-right">การจัดการสิทธิ์เข้าถึง</th>
+              <th style={{ width: '20%' }} className="align-right">การจัดการรายงาน</th>
             </tr>
           </thead>
           <tbody>
-            {namesList.length === 0 ? (
+            {filteredNamesList.length === 0 ? (
               <tr>
                 <td colSpan="5" style={{ textAlign: "center" }}>
                   ไม่มีข้อมูล
                 </td>
               </tr>
             ) : (
-              namesList.map((person, index) => (
+              filteredNamesList.map((person, index) => (
                 <tr key={index}>
                   <td>{person.name}</td>
                   <td className="align-center">
@@ -117,7 +112,6 @@ function Permission() {
                     </label>
                   </td>
                   <td>
-                    {/* ปุ่มลบ */}
                     <button
                       className="btn-danger"
                       onClick={() => handleDelete(index)}
@@ -140,4 +134,5 @@ function Permission() {
     </div>
   );
 }
+
 export default Permission;
