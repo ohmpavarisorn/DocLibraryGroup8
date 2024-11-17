@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import { verifyUser } from "../../data/users";
@@ -6,13 +6,14 @@ import { verifyUser } from "../../data/users";
 function Login({ setToken, setRole, setUsername, setPassword }) {
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
     const username = usernameRef.current.value.trim();
     const password = passwordRef.current.value.trim();
 
-    // Reset input fields
+    // Clear input fields after capturing the values
     usernameRef.current.value = "";
     passwordRef.current.value = "";
 
@@ -24,8 +25,8 @@ function Login({ setToken, setRole, setUsername, setPassword }) {
     } else {
       setToken(userInfo.token);
       setRole(userInfo.role);
-      setUsername(username); // Set username in App
-      setPassword(password); // Set password in App
+      setUsername(username);
+      setPassword(password);
     }
   };
 
@@ -33,15 +34,13 @@ function Login({ setToken, setRole, setUsername, setPassword }) {
     setToken("guest_token");
     setRole("guest");
     setUsername("guest");
-    setPassword(""); // Set empty password for guest
+    setPassword("");
   };
 
   return (
     <div className="login-page">
       <div className="login-container">
         <div className="login-form">
-          <img src="" alt="" className="logo" />
-
           <h2>ยินดีต้อนรับ</h2>
           <form onSubmit={handleLogin}>
             <label className="login-form__label">ชื่อผู้ใช้*</label>
@@ -53,13 +52,26 @@ function Login({ setToken, setRole, setUsername, setPassword }) {
               className="login-form__input"
             />
             <label className="login-form__label">รหัสผ่าน*</label>
-            <input
-              type="password"
-              placeholder="กรอกรหัสผ่าน"
-              ref={passwordRef}
-              required
-              className="login-form__input"
-            />
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="กรอกรหัสผ่าน"
+                ref={passwordRef}
+                required
+                className="login-form__input password-input"
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowPassword((prev) => !prev)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                <i
+                  className={showPassword ? "bi bi-eye"  : "bi bi-eye-slash"}
+                ></i>
+              </button>
+            </div>
+
             <button type="submit" className="login-button">
               เข้าสู่ระบบ
             </button>

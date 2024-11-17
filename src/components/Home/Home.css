@@ -33,7 +33,7 @@
     box-sizing: border-box;
 }
 
-h1 {
+.title-doc {
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -43,12 +43,13 @@ h1 {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 98%; /* ความกว้างสูงสุดของ search bar */
+    max-width: 98%;
+    /* ความกว้างสูงสุดของ search bar */
     /* margin-bottom: 20px; */
 }
 
 
-.search-bar input {
+.search-input {
     padding: 10px;
     flex: 1;
     border: 1px solid #ccc;
@@ -71,14 +72,14 @@ h1 {
     border-radius: 5px;
 }
 
-table {
+.document-table {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-table th, table td {
+.table-tr-td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -98,17 +99,17 @@ table th, table td {
     border-radius: 5px;
 }
 
-.view-btn{
+.view-btn {
     background-color: #ffd5b7;
     border-radius: 20px;
     border: none;
 }
 
-.download-btn{
+.download-btn {
     border: none;
 }
 
-.downloadm{
+.downloadm {
     background-color: #ffd5b7;
 }
 
@@ -148,13 +149,13 @@ table th, table td {
     flex-direction: column;
 }
 
-.filter-item label {
+.filter-label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.filter-item input,
-.filter-item select {
+.filter-input,
+.filter-select {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -187,7 +188,7 @@ table th, table td {
     cursor: pointer;
 }
 
-.fil-buttons{
+.fil-buttons {
     border: none;
     background-color: #e2e4ff;
     border-radius: 20px;
