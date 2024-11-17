@@ -3,6 +3,7 @@
 .upload-page-container{
     padding: 20px;
     font-family: Arial, sans-serif;
+    height: 100vh;
    
 }
 .upload-container{
@@ -29,10 +30,11 @@ h2 {
 }
 
 .upload-form input[type="text"],
+.upload-form input[type="number"],
 .upload-form input[type="file"],
 .upload-form select,
 .upload-form textarea {
-    width: 60%;
+    width: 50%;
     padding: 10px;
     font-size: 14px;
     color: #333;
@@ -53,14 +55,16 @@ h2 {
 }
 
 .btn-success{
-    width: 20%;
+    position: absolute;
+    left: 270px;
+    bottom: 50px;
+    width: 10%;
     padding: 10px;
     font-size: 16px;
     color: #ffffff;
     background-color: #28a745;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
     cursor: pointer;
 }
 

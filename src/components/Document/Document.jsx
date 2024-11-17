@@ -29,6 +29,19 @@ function Document() {
     setUploadSuccess(false);
   };
 
+  const resetForm = () => {
+    setDocumentName("");
+    setFiscalYear("");
+    setDocumentNumber("");
+    setDocumentType("");
+    setDepartment("");
+    setHashtag("");
+    setAdditionalNotes("");
+    setFile(null);
+    setUploadSuccess(false);
+    setErrorMessage("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,7 +50,7 @@ function Document() {
       return;
     }
 
-    console.log({
+    const documentData = {
       documentName,
       fiscalYear,
       documentNumber,
@@ -45,45 +58,50 @@ function Document() {
       department,
       hashtag,
       additionalNotes,
-      fileName: file.name,
-      fileSize: file.size,
-    });
-
-    // แสดงข้อความสำเร็จเมื่ออัปโหลดข้อมูล
+      fileName: file ? file.name : null,
+      fileSize: file ? file.size : null,
+    };
+    // แสดงข้อมูลใน console
+    console.log(documentData);
+    // แสดงข้อความสำเร็จและล้างฟอร์ม
+    alert("บันทึกสำเร็จ!");
     setUploadSuccess(true);
-    setErrorMessage("");
+    resetForm();
   };
 
   return (
     <div className="upload-page-container">
       <h2>อัปโหลดเอกสาร</h2>
       <form onSubmit={handleSubmit} className="upload-form">
-        <label>ชื่อเอกสาร</label>
+        <label>ชื่อเอกสาร <span style={{ color: "red" }}>*</span></label>
         <input
           type="text"
           value={documentName}
           onChange={(e) => setDocumentName(e.target.value)}
           placeholder="กรอกชื่อเอกสาร"
+          required
         />
 
-        <label>ปีงบประมาณ</label>
-        <select value={fiscalYear} onChange={(e) => setFiscalYear(e.target.value)}>
+        <label>ปีงบประมาณ <span style={{ color: "red" }}>*</span></label>
+        <select value={fiscalYear} onChange={(e) => setFiscalYear(e.target.value)} required>
           <option value="">เลือก</option>
           <option value="2565">2565</option>
           <option value="2566">2566</option>
           <option value="2567">2567</option>
         </select>
 
-        <label>เลขเอกสาร</label>
+        <label>เลขเอกสาร <span style={{ color: "red" }}>*</span></label>
         <input
-          type="text"
+          type="number"
           value={documentNumber}
           onChange={(e) => setDocumentNumber(e.target.value)}
           placeholder="xxxxxxxx"
+          min={1}
+          required
         />
 
-        <label>ประเภทเอกสาร</label>
-        <select value={documentType} onChange={(e) => setDocumentType(e.target.value)}>
+        <label>ประเภทเอกสาร <span style={{ color: "red" }}>*</span></label>
+        <select value={documentType} onChange={(e) => setDocumentType(e.target.value)} required>
           <option value="">เลือกประเภท</option>
           <option value="ประเภท 1">หนังสือประชาสัมพันธ์</option>
           <option value="ประเภท 2">รายงานการประชุม</option>
@@ -92,8 +110,8 @@ function Document() {
           <option value="ประเภท 5">หนังสือสั่งการข้อบังคับ</option>
         </select>
 
-        <label>หน่วยงาน</label>
-        <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+        <label>หน่วยงาน <span style={{ color: "red" }}>*</span></label>
+        <select value={department} onChange={(e) => setDepartment(e.target.value)} required>
           <option value="">เลือกหน่วยงาน</option>
           <option value="หน่วยงาน 1">สำนักงานรัฐมนตรี</option>
           <option value="หน่วยงาน 2">สำนักงานปลัดกระทรวงพลังงาน</option>
@@ -115,19 +133,15 @@ function Document() {
           onChange={(e) => setAdditionalNotes(e.target.value)}
         ></textarea>
 
-        <button type="submit" className="btn btn-success" onClick={() => {
-          alert('บันทึกสำเร็จ!');
-        }}>
+        <button type="submit" className="btn btn-success">
           บันทึก
         </button>
       </form>
       <div className="upload-container">
-      <label>เลือกไฟล์</label>
-        <input type="file" onChange={handleFileChange}/>
-
+        <label>เลือกไฟล์</label>
+        <input type="file" onChange={handleFileChange} />
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        
-        </div>
+      </div>
     </div>
   );
 }
