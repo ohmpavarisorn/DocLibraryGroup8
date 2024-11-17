@@ -51,13 +51,14 @@ const Home = () => {
     return (
         <div className="home-container">
             <div className="main-content">
-                <h1>ค้นหาเอกสารทั้งหมด</h1>
+                <h1 className='title-doc'>ค้นหาเอกสารทั้งหมด</h1>
                 <div className="search-bar">
                     <input
                         type="text"
                         placeholder="ค้นหาเอกสาร..."
                         value={searchTerm}
                         onChange={handleSearch}
+                        className='search-input'
                     />
                     <button className='sort' onClick={toggleDropdown}>
                         จัดเรียง <span><i className="bi bi-caret-down-fill" style={{ color: "#e66309" }}></i></span>
@@ -68,20 +69,20 @@ const Home = () => {
                     <div className="filter-dropdown" ref={dropdownRef}>
                         <div className="filter-row">
                             <div className="filter-item">
-                                <label>เลขเอกสาร</label>
-                                <input type="text" placeholder="ใส่เลขเอกสาร" />
+                                <label className='filter-label'>เลขเอกสาร</label>
+                                <input className='filter-input' type="text" placeholder="ใส่เลขเอกสาร" />
                             </div>
                             <div className="filter-item">
-                                <label>ชื่อเอกสาร</label>
-                                <input type="text" placeholder="ใส่ชื่อเอกสาร" />
+                                <label className='filter-label'>ชื่อเอกสาร</label>
+                                <input className='filter-input' type="text" placeholder="ใส่ชื่อเอกสาร" />
                             </div>
                             <div className="filter-item">
-                                <label>วันที่</label>
-                                <input type="date" />
+                                <label className='filter-label'>วันที่</label>
+                                <input className='filter-input' type="date" />
                             </div>
                             <div className='filter-item'>
-                                <label>ประเภทเอกสาร</label>
-                                <select>
+                                <label className='filter-label'>ประเภทเอกสาร</label>
+                                <select className='filter-select'>
                                     <option value="">เลือก</option>
                                     <option value="ประเภท 1">หนังสือประชาสัมพันธ์</option>
                                     <option value="ประเภท 2">รายงานการประชุม</option>
@@ -93,8 +94,8 @@ const Home = () => {
                         </div>
                         <div className="filter-row">
                             <div className="filter-item">
-                                <label>ปีงบประมาณ</label>
-                                <select>
+                                <label className='filter-label'>ปีงบประมาณ</label>
+                                <select className='filter-select'>
                                     <option value="">เลือก</option>
                                     <option value="2565">2565</option>
                                     <option value="2566">2566</option>
@@ -102,8 +103,8 @@ const Home = () => {
                                 </select>
                             </div>
                             <div className="filter-item">
-                                <label>หน่วยงาน</label>
-                                <select>
+                                <label className='filter-label'>หน่วยงาน</label>
+                                <select className='filter-select'>
                                     <option value="">เลือก</option>
                                     <option value="หน่วยงาน 1">สำนักงานรัฐมนตรี</option>
                                     <option value="หน่วยงาน 2">สำนักงานปลัดกระทรวงพลังงาน</option>
@@ -113,8 +114,8 @@ const Home = () => {
                                 </select>
                             </div>
                             <div className="filter-item">
-                                <label>คำเกี่ยวข้อง</label>
-                                <input type="text" placeholder="ใส่คำเกี่ยวข้อง" />
+                                <label className='filter-label'>คำเกี่ยวข้อง</label>
+                                <input className='filter-input' type="text" placeholder="ใส่คำเกี่ยวข้อง" />
                             </div>
                         </div>
                         <div className="filter-buttons">
@@ -134,28 +135,28 @@ const Home = () => {
                     <button className='downloadm'><span><i className="bi bi-check-lg"></i></span>&nbsp;เลือกหลายรายการ</button>
                     <button className='downloadm'><span><i className="fi fi-ss-down-to-line" style={{ color: "#F14D31" }}></i></span>&nbsp;ดาวน์โหลด</button>
                 </div>
-                <table>
+                <table className='document-table'>
                     <thead>
                         <tr>
-                            <th>ลำดับ</th>
-                            <th>ชื่อเอกสาร</th>
-                            <th>เอกสาร</th>
-                            <th>วันที่ลง</th>
-                            <th>ปีงบประมาณ</th>
-                            <th>หน่วยงาน</th>
-                            <th>เครื่องมือ</th>
+                            <th className='table-tr-td'>ลำดับ</th>
+                            <th className='table-tr-td'>ชื่อเอกสาร</th>
+                            <th className='table-tr-td'>เอกสาร</th>
+                            <th className='table-tr-td'>วันที่ลง</th>
+                            <th className='table-tr-td'>ปีงบประมาณ</th>
+                            <th className='table-tr-td'>หน่วยงาน</th>
+                            <th className='table-tr-td'>เครื่องมือ</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredDocuments.map((doc, index) => (
                             <tr key={doc.id}>
-                                <td>{index + 1}</td>
-                                <td>{doc.name}</td>
-                                <td>{doc.docu}</td>
-                                <td>{doc.date}</td>
-                                <td>{doc.year}</td>
-                                <td>{doc.category}</td>
-                                <td>
+                                <td className='table-tr-td'>{index + 1}</td>
+                                <td className='table-tr-td'>{doc.name}</td>
+                                <td className='table-tr-td'>{doc.docu}</td>
+                                <td className='table-tr-td'>{doc.date}</td>
+                                <td className='table-tr-td'>{doc.year}</td>
+                                <td className='table-tr-td'>{doc.category}</td>
+                                <td className='table-tr-td'>
                                     <button className="view-btn"><i className="bi bi-eye" style={{ color: "#e66309" }}></i></button>
                                     <button className="download-btn"><i className="bi bi-download"></i></button>
                                 </td>
